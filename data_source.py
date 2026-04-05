@@ -39,18 +39,11 @@ class DataSource:
 
                 # Convert list to DataFrame (like Excel table)
                 return pd.DataFrame(crypto_list)
+            
+            else:
+                print(f"API Error: Received status code {response.status_code}")
+                return pd.DataFrame()
 
         except Exception as error:
-                print(f"Error getting crypto data: {error}")
-                return pd.DataFrame()  # Return empty table if error
-        
-    def get_sample_weather(self):
-        """Get sample weather data (for demonstration)"""
-        # For beginners, we'll use sample data instead of real API
-        data = {
-            'temperature': 22,
-            'humidity': 65,
-            'city': 'London',
-            'description': 'Sunny'
-        }
-        return data  # <--- MAKE SURE THIS IS HERE
+            print(f"Error getting crypto data: {error}")
+            return pd.DataFrame()  # Return empty table if error

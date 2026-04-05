@@ -39,39 +39,21 @@ class ChartCreator:
 
         return fig
 
-        def create_weather_display(self, weather_data):
-            """Create weather information display"""
+    def create_summary_metrics(self, crypto_data):
+        """Create summary information about our data"""
 
-            # Create columns for different weather metrics
+        if not crypto_data.empty:
+            # Calculate metrics
+            avg_change = crypto_data['change'].mean()
+            max_price = crypto_data['price'].max()
+            min_price = crypto_data['price'].min()
+
+            # Display summary metrics in columns
             col1, col2, col3 = st.columns(3)
-
-            # Display temperature
-            with col1:
-                st.metric(
-                    label="Temperature",  # What we're showing
-                    value=f"{weather_data['temperature']}°C",  # Current value
-                    delta=None  # No change indicator for now
-                )
             
-            # Display humidity
+            with col1:
+                st.metric("Avg 24h Change", f"{avg_change:.2f}%")
             with col2:
-                st.metric(
-                    label="Humidity",
-                    value=f"{weather_data['humidity']}%",
-                    delta=None
-                )
-
-            # Display city and description
+                st.metric("Highest Price", f"${max_price:,.2f}")
             with col3:
-                st.write(f"**City:** {weather_data['city']}")
-                st.write(f"**Weather:** {weather_data['description']}")
-
-def create_summary_metrics(self, crypto_data):
-    """Create summary information about our data"""
-
-    if not crypto_data.empty:
-        # Calculate average change
-        avg_change = crypto_data['change'].mean()
-
-        # Display summary metrics
-        col1, col2, col3 = st.columns(3)
+                st.metric("Lowest Price", f"${min_price:,.2f}")
