@@ -47,10 +47,10 @@ class DataSource:
     def get_sample_weather(self):
         """Get sample weather data (for demonstration)"""
         # For beginners, we'll use sample data instead of real API
-        return {
+        data = {
             'temperature': 22,
             'humidity': 65,
             'city': 'London',
-            'description': 'Sunny',
-            'time': datetime.now()
-        }   
+            'description': 'Sunny'
+        }
+        return data  # <--- MAKE SURE THIS IS HERE

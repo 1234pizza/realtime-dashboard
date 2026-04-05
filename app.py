@@ -76,12 +76,18 @@ def main():
             st.subheader("Local Weather")
             col1, col2, col3 = st.columns(3)
             with col1:
+                # Get the temperature and handle potential missing data
+                temp_val = weather_data.get('temperature', 'N/A')
+                
                 st.metric(
                     label="Temperature", 
-                    value=f"{weather_data['temperature']}°C",
+                    value=f"{temp_val}°C",
                     key=f"temp_{update_count}"
                 )
             with col2:
+                # Get the humidity and handle potential missing data
+                hum_val = weather_data.get('humidity', 'N/A')
+
                 st.metric(
                     label="Humidity", 
                     value=f"{weather_data['humidity']}%",
