@@ -8,8 +8,8 @@ class DataSource:
         # URLs - addresses where we get our data
         self.crypto_url = "https://api.coingecko.com/api/v3/simple/price"
 
-    def get_crypto_prices(self):
-        """Get cryptocurrency prices from internet"""
+    def get_crypto_data(self):
+        """Get cryptocurrency data from internet"""
         try:
             # Parameters - what exactly we want to get
             params = {
